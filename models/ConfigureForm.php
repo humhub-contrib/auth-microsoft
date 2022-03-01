@@ -1,11 +1,11 @@
 <?php
 
-namespace humhubContrib\auth\live\models;
+namespace humhubContrib\auth\microsoft\models;
 
 use Yii;
 use yii\base\Model;
 use yii\helpers\Url;
-use humhubContrib\auth\live\Module;
+use humhubContrib\auth\microsoft\Module;
 
 /**
  * The module configuration model
@@ -49,9 +49,9 @@ class ConfigureForm extends Model
     public function attributeLabels()
     {
         return [
-            'enabled' => Yii::t('AuthLiveModule.base', 'Enabled'),
-            'clientId' => Yii::t('AuthLiveModule.base', 'Client ID'),
-            'clientSecret' => Yii::t('AuthLiveModule.base', 'Client secret'),
+            'enabled' => Yii::t('AuthMicrosoftModule.base', 'Enabled'),
+            'clientId' => Yii::t('AuthMicrosoftModule.base', 'Client ID'),
+            'clientSecret' => Yii::t('AuthMicrosoftModule.base', 'Client secret'),
         ];
     }
 
@@ -70,7 +70,7 @@ class ConfigureForm extends Model
     public function loadSettings()
     {
         /** @var Module $module */
-        $module = Yii::$app->getModule('auth-live');
+        $module = Yii::$app->getModule('auth-microsoft');
 
         $settings = $module->settings;
 
@@ -87,7 +87,7 @@ class ConfigureForm extends Model
     public function saveSettings()
     {
         /** @var Module $module */
-        $module = Yii::$app->getModule('auth-live');
+        $module = Yii::$app->getModule('auth-microsoft');
 
         $module->settings->set('enabled', (boolean)$this->enabled);
         $module->settings->set('clientId', $this->clientId);

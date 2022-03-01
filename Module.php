@@ -1,7 +1,8 @@
 <?php
 
-namespace humhubContrib\auth\live;
+namespace humhubContrib\auth\microsoft;
 
+use humhub\libs\DynamicConfig;
 use yii\helpers\Url;
 
 /**
@@ -32,11 +33,29 @@ class Module extends \humhub\components\Module
         parent::disable();
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function init()
-    {
+    public function init() {
         parent::init();
+
+        $config = DynamicConfig::load();
+        $rule = [
+            'class' => 'yii\web\UrlRule',
+            'pattern' => '/user/auth/microsoft',
+            'route' => '/user/auth/external',
+            'defaults' => [
+                'authclient' => 'microsoft'
+            ]
+        ];
+
+        if(!array_key_exists('urlManager', $config['components']) || !array_key_exists('rules', $config['components']['urlManager']) ||!in_array($rule, $config['components']['urlManager']['rules'])) {
+            DynamicConfig::merge(['components' => [
+                'urlManager' => [
+                    'showScriptName' => false,
+                    'enablePrettyUrl' => true,
+                    'rules' => [
+                        $rule
+                    ]
+                ],
+            ]]);
+        }
     }
 }

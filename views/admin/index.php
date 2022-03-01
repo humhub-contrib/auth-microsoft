@@ -1,6 +1,6 @@
 <?php
 /* @var $this \humhub\modules\ui\view\components\View */
-/* @var $model \humhubContrib\auth\live\models\ConfigureForm */
+/* @var $model \humhubContrib\auth\microsoft\models\ConfigureForm */
 
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
@@ -9,12 +9,12 @@ use yii\helpers\Html;
 <div class="container-fluid">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <?= Yii::t('AuthLiveModule.base', '<strong>Microsoft</strong> Sign-In configuration') ?></div>
+            <?= Yii::t('AuthMicrosoftModule.base', '<strong>Microsoft</strong> Sign-In configuration') ?></div>
 
         <div class="panel-body">
             <p>
-                <?= Html::a(Yii::t('AuthLiveModule.base', 'Microsoft Live Documentation'), 'https://docs.microsoft.com/en-us/advertising/guides/authentication-oauth?view=bingads-13', ['class' => 'btn btn-primary pull-right btn-sm', 'target' => '_blank']); ?>
-                <?= Yii::t('AuthLiveModule.base', 'Please follow the instructions to create the required <strong>client</strong> credentials.'); ?>
+                <?= Html::a(Yii::t('AuthMicrosoftModule.base', 'Microsoft Documentation'), 'https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-protocols#app-registration', ['class' => 'btn btn-primary pull-right btn-sm', 'target' => '_blank']); ?>
+                <?= Yii::t('AuthMicrosoftModule.base', 'Please follow the instructions to create the required <strong>client</strong> credentials.'); ?>
                 <br/>
             </p>
             <br/>

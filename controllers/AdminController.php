@@ -1,10 +1,10 @@
 <?php
 
-namespace humhubContrib\auth\live\controllers;
+namespace humhubContrib\auth\microsoft\controllers;
 
 use Yii;
 use humhub\modules\admin\components\Controller;
-use humhubContrib\auth\live\models\ConfigureForm;
+use humhubContrib\auth\microsoft\models\ConfigureForm;
 
 /**
  * Module configuration

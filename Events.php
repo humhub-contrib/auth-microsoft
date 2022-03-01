@@ -1,12 +1,11 @@
 <?php
 
-namespace humhubContrib\auth\live;
+namespace humhubContrib\auth\microsoft;
 
 use humhub\components\Event;
 use humhub\modules\user\authclient\Collection;
-use humhubContrib\auth\live\authclient\LiveAuth;
-use humhubContrib\auth\live\models\ConfigureForm;
-use yii\helpers\Url;
+use humhubContrib\auth\microsoft\authclient\MicrosoftAuth;
+use humhubContrib\auth\microsoft\models\ConfigureForm;
 
 class Events
 {
@@ -19,10 +18,11 @@ class Events
         $authClientCollection = $event->sender;
 
         if (!empty(ConfigureForm::getInstance()->enabled)) {
-            $authClientCollection->setClient('live', [
-                'class' => LiveAuth::class,
+            $authClientCollection->setClient('microsoft', [
+                'class' => MicrosoftAuth::class,
                 'clientId' => ConfigureForm::getInstance()->clientId,
                 'clientSecret' => ConfigureForm::getInstance()->clientSecret,
+                'returnUrl' => \Yii::$app->urlManager->createAbsoluteUrl(['/user/auth/microsoft'])
             ]);
         }
     }

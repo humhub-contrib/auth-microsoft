@@ -3,10 +3,10 @@
 use humhub\modules\user\authclient\Collection;
 
 return [
-    'id' => 'auth-live',
-    'class' => 'humhubContrib\auth\live\Module',
-    'namespace' => 'humhubContrib\auth\live',
+    'id' => 'auth-microsoft',
+    'class' => 'humhubContrib\auth\microsoft\Module',
+    'namespace' => 'humhubContrib\auth\microsoft',
     'events' => [
-        [Collection::class, Collection::EVENT_AFTER_CLIENTS_SET, ['humhubContrib\auth\live\Events', 'onAuthClientCollectionInit']]
-    ],
+        [Collection::class, Collection::EVENT_AFTER_CLIENTS_SET, ['humhubContrib\auth\microsoft\Events', 'onAuthClientCollectionInit']]
+    ]
 ];

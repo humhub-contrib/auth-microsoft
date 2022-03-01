@@ -1,11 +1,11 @@
 {
-    "id": "auth-live",
-    "name": "Microsoft Live Sign-In",
-    "description": "Integrating MS Live Sign-In (OAuth).",
+    "id": "auth-microsoft",
+    "name": "Microsoft Sign-In",
+    "description": "Integrating Microsoft Sign-In (OAuth).",
     "keywords": [
     ],
     "version": "1.0.0",
-    "homepage": "https://github.com/humhub-contrib/auth-live",
+    "homepage": "https://github.com/humhub-contrib/auth-microsoft",
     "humhub": {
         "minVersion": "1.6"
     }
