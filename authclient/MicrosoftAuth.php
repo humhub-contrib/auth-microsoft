@@ -13,16 +13,6 @@ class MicrosoftAuth extends Live
     /**
      * @inheritdoc
      */
-    public $authUrl = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize';
-
-    /**
-     * @inheritdoc
-     */
-    public $tokenUrl = 'https://login.microsoftonline.com/common/oauth2/v2.0/token';
-
-    /**
-     * @inheritdoc
-     */
     public $apiBaseUrl = 'https://graph.microsoft.com';
 
     /**

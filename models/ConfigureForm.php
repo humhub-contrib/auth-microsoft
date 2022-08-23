@@ -18,6 +18,11 @@ class ConfigureForm extends Model
     public $enabled;
 
     /**
+     * @var string the directory id provided by Microsoft (Azure directory(tenant) id)
+     */
+    public $directoryId;
+
+    /**
      * @var string the client id provided by Microsoft (Azure application id)
      */
     public $clientId;
@@ -38,7 +43,7 @@ class ConfigureForm extends Model
     public function rules()
     {
         return [
-            [['clientId', 'clientSecret'], 'required'],
+            [['clientId', 'clientSecret', 'directoryId'], 'required'],
             [['enabled'], 'boolean'],
         ];
     }
@@ -50,6 +55,7 @@ class ConfigureForm extends Model
     {
         return [
             'enabled' => Yii::t('AuthMicrosoftModule.base', 'Enabled'),
+            'directoryId' => Yii::t('AuthMicrosoftModule.base', 'Directory(Tenant) ID'),
             'clientId' => Yii::t('AuthMicrosoftModule.base', 'Client ID'),
             'clientSecret' => Yii::t('AuthMicrosoftModule.base', 'Client secret'),
         ];
@@ -75,6 +81,7 @@ class ConfigureForm extends Model
         $settings = $module->settings;
 
         $this->enabled = (boolean)$settings->get('enabled');
+        $this->directoryId = $settings->get('directoryId');
         $this->clientId = $settings->get('clientId');
         $this->clientSecret = $settings->get('clientSecret');
 
@@ -90,6 +97,7 @@ class ConfigureForm extends Model
         $module = Yii::$app->getModule('auth-microsoft');
 
         $module->settings->set('enabled', (boolean)$this->enabled);
+        $module->settings->set('directoryId', $this->directoryId);
         $module->settings->set('clientId', $this->clientId);
         $module->settings->set('clientSecret', $this->clientSecret);
 

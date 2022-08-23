@@ -24,6 +24,7 @@ use yii\helpers\Html;
             <?= $form->field($model, 'enabled')->checkbox(); ?>
 
             <br/>
+            <?= $form->field($model, 'directoryId'); ?>
             <?= $form->field($model, 'clientId'); ?>
             <?= $form->field($model, 'clientSecret'); ?>
 
