@@ -1,7 +1,7 @@
-# Microsoft Live Sign-In
+# Microsoft Azure Sign-In
 
 Using this module, users can directly log in or register with their Microsoft account credentials at this HumHub installation. 
-A new button "Live" will appear on the login page.
+A new button "Microsoft" will appear on the login page.
 
 ## Configuration
 
