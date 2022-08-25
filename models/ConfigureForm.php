@@ -43,7 +43,8 @@ class ConfigureForm extends Model
     public function rules()
     {
         return [
-            [['clientId', 'clientSecret', 'directoryId'], 'required'],
+            [['directoryId'], 'safe'],
+            [['clientId', 'clientSecret'], 'required'],
             [['enabled'], 'boolean'],
         ];
     }
@@ -95,7 +96,6 @@ class ConfigureForm extends Model
     {
         /** @var Module $module */
         $module = Yii::$app->getModule('auth-microsoft');
-
         $module->settings->set('enabled', (boolean)$this->enabled);
         $module->settings->set('directoryId', $this->directoryId);
         $module->settings->set('clientId', $this->clientId);
