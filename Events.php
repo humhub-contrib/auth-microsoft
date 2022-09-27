@@ -33,7 +33,7 @@ class Events
                 'tokenUrl' => $tokenUrl,
                 'clientId' => ConfigureForm::getInstance()->clientId,
                 'clientSecret' => ConfigureForm::getInstance()->clientSecret,
-                'returnUrl' => \Yii::$app->urlManager->createAbsoluteUrl(['/user/auth/external'])
+                'returnUrl' => \Yii::$app->urlManager->createAbsoluteUrl(['/user/auth/external?authclient=microsoft'])
             ]);
         }
     }

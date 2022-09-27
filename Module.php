@@ -40,7 +40,7 @@ class Module extends \humhub\components\Module
         $rule = [
             'class' => 'yii\web\UrlRule',
             //'pattern' => '/user/auth/microsoft',
-            'pattern' => '/user/auth/external',
+            'pattern' => '/user/auth/external?authclient=microsoft',
             'route' => '/user/auth/external',
             'defaults' => [
                 'authclient' => 'microsoft'
