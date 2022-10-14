@@ -21,7 +21,7 @@ class Module extends \humhub\components\Module
      */
     public function getConfigUrl()
     {
-        return Url::to(['/auth-live/admin']);
+        return Url::to(['/auth-microsoft/admin']);
     }
 
     /**
@@ -39,7 +39,8 @@ class Module extends \humhub\components\Module
         $config = DynamicConfig::load();
         $rule = [
             'class' => 'yii\web\UrlRule',
-            'pattern' => '/user/auth/microsoft',
+            //'pattern' => '/user/auth/microsoft',
+            'pattern' => '/user/auth/external?authclient=microsoft',
             'route' => '/user/auth/external',
             'defaults' => [
                 'authclient' => 'microsoft'

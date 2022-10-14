@@ -14,7 +14,8 @@ use yii\helpers\Html;
         <div class="panel-body">
             <p>
                 <?= Html::a(Yii::t('AuthMicrosoftModule.base', 'Microsoft Documentation'), 'https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-protocols#app-registration', ['class' => 'btn btn-primary pull-right btn-sm', 'target' => '_blank']); ?>
-                <?= Yii::t('AuthMicrosoftModule.base', 'Please follow the instructions to create the required <strong>client</strong> credentials.'); ?>
+                <?= Yii::t('AuthMicrosoftModule.base', 'Please follow the instructions to create the required <strong>client</strong> credentials.</br>'); ?>
+                <?= Yii::t('AuthMicrosoftModule.base', 'leave the Directory ID blank if your Azure AD settings allows "Multitenant" type.'); ?>
                 <br/>
             </p>
             <br/>
@@ -24,6 +25,7 @@ use yii\helpers\Html;
             <?= $form->field($model, 'enabled')->checkbox(); ?>
 
             <br/>
+            <?= $form->field($model, 'directoryId'); ?>
             <?= $form->field($model, 'clientId'); ?>
             <?= $form->field($model, 'clientSecret'); ?>
 
