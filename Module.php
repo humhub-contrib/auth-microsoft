@@ -21,7 +21,7 @@ class Module extends \humhub\components\Module
      */
     public function getConfigUrl()
     {
-        return Url::to(['/auth-live/admin']);
+        return Url::to(['/auth-microsoft/admin']);
     }
 
     /**
@@ -46,7 +46,7 @@ class Module extends \humhub\components\Module
             ]
         ];
 
-        if(!array_key_exists('urlManager', $config['components']) || !array_key_exists('rules', $config['components']['urlManager']) ||!in_array($rule, $config['components']['urlManager']['rules'])) {
+        if (!array_key_exists('urlManager', $config['components']) || !array_key_exists('rules', $config['components']['urlManager']) ||!in_array($rule, $config['components']['urlManager']['rules'])) {
             DynamicConfig::merge(['components' => [
                 'urlManager' => [
                     'showScriptName' => false,
