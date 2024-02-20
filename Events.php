@@ -22,7 +22,6 @@ class Events
                 'class' => MicrosoftAuth::class,
                 'clientId' => ConfigureForm::getInstance()->clientId,
                 'clientSecret' => ConfigureForm::getInstance()->clientSecret,
-                'returnUrl' => \Yii::$app->urlManager->createAbsoluteUrl(['/user/auth/microsoft'])
             ]);
         }
     }
