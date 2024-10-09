@@ -4,7 +4,6 @@ namespace humhubContrib\auth\microsoft\authclient;
 
 use yii\authclient\clients\Live;
 
-
 /**
  * MicrosoftAuth allows authentication via Microsoft OAuth.
  */
@@ -34,7 +33,7 @@ class MicrosoftAuth extends Live
             $this->scope = implode(' ', [
                 'email',
                 'openid',
-                'profile'
+                'profile',
             ]);
         }
     }
@@ -82,7 +81,7 @@ class MicrosoftAuth extends Live
     protected function defaultNormalizeUserAttributeMap()
     {
         return [
-            'id' => function($attributes) {
+            'id' => function ($attributes) {
                 return $attributes['sub'];
             },
             'username' => 'displayName',
