@@ -8,7 +8,7 @@ return [
     'class' => 'humhubContrib\auth\microsoft\Module',
     'namespace' => 'humhubContrib\auth\microsoft',
     'events' => [
-        [Collection::class, Collection::EVENT_AFTER_CLIENTS_SET, ['humhubContrib\auth\microsoft\Events', 'onAuthClientCollectionInit']]
+        [Collection::class, Collection::EVENT_AFTER_CLIENTS_SET, ['humhubContrib\auth\microsoft\Events', 'onAuthClientCollectionInit']],
     ],
     'rules' => [
         [
@@ -16,8 +16,8 @@ return [
             'pattern' => '/user/auth/microsoft',
             'route' => '/user/auth/external',
             'defaults' => [
-                'authclient' => 'microsoft'
-            ]
+                'authclient' => 'microsoft',
+            ],
         ],
     ],
 ];
