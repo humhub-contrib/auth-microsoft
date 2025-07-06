@@ -5,3 +5,4 @@ Changelog
 ------------------
 - Initial release
 - Enh #6: Use PHP CS Fixer
+- Enh: Migration to Bootstrap 5 for HumHub 1.18

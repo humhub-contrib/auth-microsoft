@@ -7,6 +7,6 @@
     "version": "1.0.0",
     "homepage": "https://github.com/humhub-contrib/auth-microsoft",
     "humhub": {
-        "minVersion": "1.11"
+        "minVersion": "1.18"
     }
 }
