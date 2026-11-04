@@ -22,6 +22,7 @@ class Events
                 'class' => MicrosoftAuth::class,
                 'clientId' => ConfigureForm::getInstance()->clientId,
                 'clientSecret' => ConfigureForm::getInstance()->clientSecret,
+                'tenantId' => ConfigureForm::getInstance()->tenantId,
             ]);
         }
     }
