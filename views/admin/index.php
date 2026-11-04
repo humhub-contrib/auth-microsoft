@@ -30,6 +30,7 @@ use humhubContrib\auth\microsoft\models\ConfigureForm;
             <br/>
             <?= $form->field($model, 'clientId'); ?>
             <?= $form->field($model, 'clientSecret'); ?>
+            <?= $form->field($model, 'tenantId'); ?>
 
             <br/>
             <?= $form->field($model, 'redirectUri')->textInput(['readonly' => true]); ?>

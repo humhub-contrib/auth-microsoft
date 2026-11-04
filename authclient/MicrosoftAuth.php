@@ -2,6 +2,7 @@
 
 namespace humhubContrib\auth\microsoft\authclient;
 
+use Yii;
 use yii\authclient\clients\Live;
 
 /**
@@ -25,6 +26,16 @@ class MicrosoftAuth extends Live
     public $apiBaseUrl = 'https://graph.microsoft.com';
 
     /**
+     * @var string|null Directory (tenant) ID or domain. If set, only users of this organization can sign in.
+     */
+    public $tenantId;
+
+    /**
+     * @inheritdoc
+     */
+    public $accessTokenLocation = self::ACCESS_TOKEN_LOCATION_HEADER;
+
+    /**
      * @inheritdoc
      */
     public function init()
@@ -36,6 +47,14 @@ class MicrosoftAuth extends Live
                 'profile',
             ]);
         }
+
+        if ($this->tenantId !== null && trim($this->tenantId) !== '') {
+            $tenant = rawurlencode(trim($this->tenantId));
+            $this->authUrl = str_replace('/common/', '/' . $tenant . '/', $this->authUrl);
+            $this->tokenUrl = str_replace('/common/', '/' . $tenant . '/', $this->tokenUrl);
+        }
+
+        parent::init();
     }
 
     /**
@@ -43,7 +62,19 @@ class MicrosoftAuth extends Live
      */
     protected function initUserAttributes()
     {
-        return $this->api('/oidc/userinfo', 'POST');
+        $attributes = $this->api('/oidc/userinfo', 'POST');
+
+        $username = (string)($attributes['name'] ?? '');
+        if (trim($username) === '' && !empty($attributes['email'])) {
+            $username = (string)strstr($attributes['email'], '@', true);
+        }
+        $username = preg_replace('/[^\p{L}\d_\-@.]+/u', '.', $username);
+        $username = mb_substr(trim($username, '.'), 0, Yii::$app->getModule('user')->maximumUsernameLength);
+        if ($username !== '') {
+            $attributes['username'] = $username;
+        }
+
+        return $attributes;
     }
 
     /**
@@ -82,10 +113,8 @@ class MicrosoftAuth extends Live
     {
         return [
             'id' => 'sub',
-            'username' => 'displayName',
             'firstname' => 'given_name',
             'lastname' => 'family_name',
-            'title' => 'tagline',
             'email' => 'email',
         ];
     }
